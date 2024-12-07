@@ -13,6 +13,7 @@ import java.util.List;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
+	private List<String>symptomsList = new ArrayList<String>();
 	
 	/**
 	 * 
@@ -21,6 +22,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
+	
 	
 	@Override
 	public List<String> GetSymptoms() {
@@ -36,12 +38,20 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 					line = reader.readLine();
 				}
 				reader.close();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
 		}
 		
 		return result;
+	}
+	
+	public void showSymptoms() {
+		this.symptomsList = GetSymptoms();
+		this.symptomsList.forEach(System.out::println);
+		System.out.println(this.symptomsList.size());
 	}
 
 }
