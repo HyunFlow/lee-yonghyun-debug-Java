@@ -10,16 +10,14 @@ public class AnalyticsCounter {
 	private static int rashCount = 0;
 	private static int pupilCount = 0;
 	
-	public static void main(String args[]) throws Exception {
-		ReadSymptomDataFromFile symptomDataReader = new ReadSymptomDataFromFile("symptoms.txt");
+	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		
-		/* "showSymptoms" Fonction Test line. */
-		symptomDataReader.showSymptoms();
-		
-		/* Create a symptoms list as an ArrayList and 
-		count the occurrences of 'headache,' 'rash,' and 'pupils'. */
+		/* Read the file "symptoms.txt"
+		 * Create a symptoms List as ArrayList
+		 * Count the occurrences of "headache", "rash", "pupils" on the list. */
+		reader = new ReadSymptomDataFromFile("symptoms.txt");
 		List<String>symptoms = new ArrayList<>();
-		symptoms = symptomDataReader.GetSymptoms();
+		symptoms = reader.GetSymptoms();
 		
 		for(int i=0; i<symptoms.size(); i++) {
 			String symptom = symptoms.get(i);
@@ -36,13 +34,25 @@ public class AnalyticsCounter {
 		
 		/* Count Symptoms Data Mapping to symptomsData */
 		Map<String, Integer>symptomsData = new TreeMap<>();
+		countSymptoms(symptoms);
+		
+		/* Write a Text file provided by symptomsData. */
+		writer = new WriteSymptomDataToFile();
+		writer.writeSymptoms(symptomsData);
+	}
+	
+	/* Function count the occurrence of symptoms */
+	public Map<String, Integer> countSymptoms(List<String>symptoms){
+		Map<String, Integer>symptomsData = new TreeMap<>();
 		symptomsData.put("headache", headacheCount);
 		symptomsData.put("rash", rashCount);
 		symptomsData.put("dialated pupils", pupilCount);
-		
-		/* Write a Text file provided by symptomsData. */
-		WriteSymptomDataToFile countedSymptomsWriter = new WriteSymptomDataToFile();
-		countedSymptomsWriter.writeSymptoms(symptomsData);
+		return symptomsData;
 	}
 	
+	/* Function sort the  words into alphabetical order */
+	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptoms) {
+		symptoms = new TreeMap<String, Integer>();		
+		return symptoms;
+	}
 }
