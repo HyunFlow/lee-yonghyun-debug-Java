@@ -6,9 +6,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
 	
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		
@@ -19,22 +16,7 @@ public class AnalyticsCounter {
 		List<String>symptoms = new ArrayList<>();
 		symptoms = reader.GetSymptoms();
 		
-		for(int i=0; i<symptoms.size(); i++) {
-			String symptom = symptoms.get(i);
-			if(symptom.equals("headache")) {
-				headacheCount++;
-			}
-			else if(symptom.equals("rash")) {
-				rashCount++;
-			}
-			else if (symptom.contains("pupils")) {
-				pupilCount++;
-			}
-		}
-		
-		/* Count Symptoms Data Mapping to symptomsData */
-		Map<String, Integer>symptomsData = new TreeMap<>();
-		countSymptoms(symptoms);
+		Map<String, Integer>symptomsData = countSymptoms(symptoms);
 		
 		/* Write a Text file provided by symptomsData. */
 		writer = new WriteSymptomDataToFile();
@@ -43,10 +25,25 @@ public class AnalyticsCounter {
 	
 	/* Function count the occurrence of symptoms */
 	public Map<String, Integer> countSymptoms(List<String>symptoms){
+		int headacheCount = 0;
+		int rashCount = 0;
+		int pupilCount = 0; 
+		
+		for(String symptom : symptoms) {
+			if(symptom.equals("headache")) {
+				headacheCount++;
+			} else if(symptom.equals("rash")) {
+				rashCount++;
+			} else if(symptom.contains("pupils")) {
+				pupilCount++;
+			}
+		}
+		
 		Map<String, Integer>symptomsData = new TreeMap<>();
 		symptomsData.put("headache", headacheCount);
 		symptomsData.put("rash", rashCount);
 		symptomsData.put("dialated pupils", pupilCount);
+		
 		return symptomsData;
 	}
 	
