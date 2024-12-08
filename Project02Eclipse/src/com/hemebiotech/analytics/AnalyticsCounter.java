@@ -48,8 +48,8 @@ public class AnalyticsCounter {
 	}
 	
 	/* Function sort the  words into alphabetical order */
-	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptoms) {
-		symptoms = new TreeMap<String, Integer>();		
-		return symptoms;
+	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptomsData) {
+		symptomsData = new TreeMap<String, Integer>();		
+		return symptomsData;
 	}
 }
