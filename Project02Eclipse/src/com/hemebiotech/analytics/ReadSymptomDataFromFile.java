@@ -31,7 +31,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * @return List<String> containing all symptoms read from the file.
 	 */
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
 		ArrayList<String> symptoms = new ArrayList<String>();
 		
 		if (filepath != null) {
@@ -62,7 +62,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 */
 	@Override
 	public void showSymptoms() {
-		symptomsList = GetSymptoms();
+		symptomsList = getSymptoms();
 		symptomsList.forEach(System.out::println);
 		System.out.println(symptomsList.size());
 	}

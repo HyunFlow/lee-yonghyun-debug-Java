@@ -16,7 +16,7 @@ public interface ISymptomReader {
 	 * 
 	 * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
 	 */
-	public List<String> GetSymptoms ();
+	public List<String> getSymptoms ();
 	
 	/** Display all the symptoms that were read in console */
 	public void showSymptoms();
