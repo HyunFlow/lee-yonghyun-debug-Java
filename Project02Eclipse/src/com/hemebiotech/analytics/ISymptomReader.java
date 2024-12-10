@@ -18,5 +18,6 @@ public interface ISymptomReader {
 	 */
 	public List<String> GetSymptoms ();
 	
+	/** Display all the symptoms that were read in console */
 	public void showSymptoms();
 }

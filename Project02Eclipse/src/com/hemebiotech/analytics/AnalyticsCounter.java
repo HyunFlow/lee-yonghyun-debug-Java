@@ -5,25 +5,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * The class has three main functions:
+ * 1. Reads the symptoms data list.
+ * 2. Counts the occurrences of each symptom in the data.
+ * 3. Writes the count results to a file.
+ 
+ * @param reader bring the file "symptoms.txt"
+ * @param writer Make a file "result.out"
+ 
+ */
 public class AnalyticsCounter {
-	
+
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		
-		/* Read the file "symptoms.txt"
-		 * Create a symptoms List as ArrayList
-		 * Count the occurrences of "headache", "rash", "pupils" on the list. */
 		reader = new ReadSymptomDataFromFile("symptoms.txt");
-		List<String>symptoms = new ArrayList<>();
+		List<String>symptoms = new ArrayList<String>();
 		symptoms = reader.GetSymptoms();
 		
+		/** Convert symptoms list to Map */
 		Map<String, Integer>symptomsData = countSymptoms(symptoms);
 		
-		/* Write a Text file provided by symptomsData. */
+		/** Write the file "result.out" */
 		writer = new WriteSymptomDataToFile();
 		writer.writeSymptoms(symptomsData);
 	}
 	
-	/* Function count the occurrence of symptoms */
+	/** Function count the occurrence of symptoms */
 	public Map<String, Integer> countSymptoms(List<String>symptoms){
 		int headacheCount = 0;
 		int rashCount = 0;
@@ -47,7 +55,7 @@ public class AnalyticsCounter {
 		return symptomsData;
 	}
 	
-	/* Function sort the  words into alphabetical order */
+	/** Function sort the  words into alphabetical order */
 	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptomsData) {
 		symptomsData = new TreeMap<String, Integer>();		
 		return symptomsData;
