@@ -26,7 +26,7 @@ public class Main {
 		symptoms = reader.getSymptoms();
 		
 		Map<String, Integer>symptomsData = analyticsCounter.countSymptoms(symptoms);
-		analyticsCounter.sortSymptoms(symptomsData);
+		symptomsData = analyticsCounter.sortSymptoms(symptomsData);
 	
 		writer.writeSymptoms(symptomsData);
 	}
