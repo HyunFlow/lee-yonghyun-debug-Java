@@ -23,7 +23,7 @@ public class Main {
 		AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader, writer);
 		
 		List<String>symptoms = new ArrayList<>();
-		symptoms = reader.GetSymptoms();
+		symptoms = reader.getSymptoms();
 		
 		Map<String, Integer>symptomsData = analyticsCounter.countSymptoms(symptoms);
 		analyticsCounter.sortSymptoms(symptomsData);

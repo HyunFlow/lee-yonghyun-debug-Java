@@ -21,7 +21,7 @@ public class AnalyticsCounter {
 		
 		reader = new ReadSymptomDataFromFile("symptoms.txt");
 		List<String>symptoms = new ArrayList<String>();
-		symptoms = reader.GetSymptoms();
+		symptoms = reader.getSymptoms();
 		
 		/** Convert symptoms list to Map */
 		Map<String, Integer>symptomsData = countSymptoms(symptoms);
