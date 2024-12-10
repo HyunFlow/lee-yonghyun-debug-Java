@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -47,7 +48,7 @@ public class AnalyticsCounter {
 			}
 		}
 		
-		Map<String, Integer>symptomsData = new TreeMap<>();
+		Map<String, Integer>symptomsData = new HashMap<>();
 		symptomsData.put("headache", headacheCount);
 		symptomsData.put("rash", rashCount);
 		symptomsData.put("dialated pupils", pupilCount);
@@ -57,7 +58,7 @@ public class AnalyticsCounter {
 	
 	/** Function sort the  words into alphabetical order */
 	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptomsData) {
-		symptomsData = new TreeMap<String, Integer>();		
-		return symptomsData;
+		Map<String, Integer> sortedSymptomsData = new TreeMap<String, Integer>(symptomsData);		
+		return sortedSymptomsData;
 	}
 }
