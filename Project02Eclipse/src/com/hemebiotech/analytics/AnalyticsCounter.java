@@ -26,6 +26,9 @@ public class AnalyticsCounter {
 		/** Convert symptoms list to Map */
 		Map<String, Integer>symptomsData = countSymptoms(symptoms);
 		
+		/** Sort the counted symptoms in alphabetical order */
+		sortSymptoms(symptomsData);
+		
 		/** Write the file "result.out" */
 		writer = new WriteSymptomDataToFile();
 		writer.writeSymptoms(symptomsData);
@@ -55,9 +58,9 @@ public class AnalyticsCounter {
 		return symptomsData;
 	}
 	
-	/** Function sort the  words into alphabetical order */
+	/** Function Sort the words in alphabetical order */
 	public Map<String, Integer> sortSymptoms(Map<String, Integer>symptomsData) {
-		symptomsData = new TreeMap<String, Integer>();		
-		return symptomsData;
+		Map<String, Integer> sortedSymptomsData = new TreeMap<>(symptomsData);	
+		return sortedSymptomsData;
 	}
 }
